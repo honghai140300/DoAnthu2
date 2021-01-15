@@ -1,0 +1,33 @@
+﻿@model WebShop.Areas.Admin.Models.UserModel
+@{ 
+    Layout = "";
+}
+@*<form  method="post"  asp-action="LoginAdmin"  asp-controller="User">
+
+        <input type="text" asp-for="UserName"  value="" />
+        <input type="text" asp-for="PassWord"  value="" />
+        <input type="submit" name="name" value="" />
+    </form>*@
+<link href="~/css/style.css" rel="stylesheet" />
+<div class="module form-module">
+    <div class="toggle">
+        <i class="fa fa-times fa-pencil"></i>
+        <div class="tooltip">Click Me</div>
+    </div>
+    <div class="form">
+        <h2>Login to your account</h2>
+        <form asp-action="LoginAdmin">
+            <input type="text" asp-for="UserName" value="" placeholder="UserName" />
+            <input type="text" asp-for="PassWord" value="" placeholder="PassWord" />
+            <button>Login</button>
+        </form>
+    </div>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+    
+    </script>
+}
+

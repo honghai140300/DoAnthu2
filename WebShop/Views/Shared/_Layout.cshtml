@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<partial name="_HeadPartial.cshtml" />
+<body>
+    @*header*@
+    <partial name="_HeaderPartial.cshtml" />
+
+    @RenderBody()
+    <partial name="_FooterPartial.cshtml" />
+
+
+    <script src="~/js/jquery.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <script src="~/js/price-range.js"></script>
+    <script src="~/js/jquery.prettyPhoto.js"></script>
+    <script src="~/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

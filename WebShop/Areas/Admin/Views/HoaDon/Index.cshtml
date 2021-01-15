@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WebShop.Areas.Admin.Models.HoaDonModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="HoaDon" asp-action="Index">
+    <p>
+        Tìm Kiếm: <input type="text" name="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NguoiLap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayLap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NguoiLap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayLap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdHoaDon">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdHoaDon">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdHoaDon">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

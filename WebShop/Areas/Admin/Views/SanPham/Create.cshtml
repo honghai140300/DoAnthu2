@@ -1,0 +1,130 @@
+﻿@model WebShop.Areas.Admin.Models.SanPhamModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>SanPhamModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoaiSP" class="control-label"></label>
+
+            </div>
+            <div class="form-group">
+                <select class="custom-select-sm" asp-for="LoaiSP" asp-items="@(new SelectList(ViewBag.ListSp,"IdLoai","TenLoai"))"> </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DanhMuc" class="control-label"></label>
+
+            </div>
+            <div class="form-group">
+                <select class="custom-select-sm" asp-for="DanhMuc" asp-items="@(new SelectList(ViewBag.ListDanhMuc,"IdDanhMuc","Name"))"> </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaNhap" class="control-label"></label>
+                <input asp-for="GiaNhap" class="form-control" />
+                <span asp-validation-for="GiaNhap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaBan" class="control-label"></label>
+                <input asp-for="GiaBan" class="form-control" />
+                <span asp-validation-for="GiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soluong" class="control-label"></label>
+                <input asp-for="soluong" class="form-control" />
+                <span asp-validation-for="soluong" class="text-danger"></span>
+            </div>
+            <div class="custom-file">
+                <input accept="*.jpn|*.jpeg|*.png" type="file" onchange="previewFile()" name="ful" class="custom-file-input" id="ful" value="" />
+                <label class="custom-file-label" for="ful"> Choose </label>
+            </div>
+            <div class="form-group">
+                <img src="~/Img/no1.jpg" id="imgPre" alt="noimage" class="img-thumbnail" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ThuongHieu" class="control-label"></label>
+                <input asp-for="ThuongHieu" class="form-control" />
+                <span asp-validation-for="ThuongHieu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="XuatXu" class="control-label"></label>
+                <input asp-for="XuatXu" class="form-control" />
+                <span asp-validation-for="XuatXu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChatLieu" class="control-label"></label>
+                <input asp-for="ChatLieu" class="form-control" />
+                <span asp-validation-for="ChatLieu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SKU" class="control-label"></label>
+                <input asp-for="SKU" class="form-control" />
+                <span asp-validation-for="SKU" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KhuyenMai" class="control-label"></label>
+                <input asp-for="KhuyenMai" class="form-control" />
+                <span asp-validation-for="KhuyenMai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="soluongDaBan" class="control-label"></label>
+                <input asp-for="soluongDaBan" class="form-control" />
+                <span asp-validation-for="soluongDaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ngaynhap" class="control-label"></label>
+                <input asp-for="Ngaynhap" class="form-control" />
+                <span asp-validation-for="Ngaynhap" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function previewFile() {
+            const preview = document.querySelector('img.img-thumbnail');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}

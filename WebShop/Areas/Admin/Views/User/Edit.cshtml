@@ -1,0 +1,118 @@
+﻿@model WebShop.Areas.Admin.Models.UserModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdUser" />
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassWord" class="control-label"></label>
+                <input asp-for="PassWord" class="form-control" />
+                <span asp-validation-for="PassWord" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gmail" class="control-label"></label>
+                <input asp-for="Gmail" class="form-control" />
+                <span asp-validation-for="Gmail" class="text-danger"></span>
+            </div>
+            <div class="custom-file">
+                <input accept="*.jpn|*.jpeg|*.png" type="file" onchange="previewFile()" name="ful" class="custom-file-input" id="ful" value="" />
+                <label class="custom-file-label" for="ful"> Choose </label>
+            </div>
+            <div class="form-group">
+                <img src="~/Img/no1.jpg" id="imgPre" alt="noimage" class="img-thumbnail" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Sdt" class="control-label"></label>
+                <input asp-for="Sdt" class="form-control" />
+                <span asp-validation-for="Sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label"></label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label"></label>
+                <input asp-for="GioiTinh" class="form-control" />
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgaySinh" class="control-label"></label>
+                <input asp-for="NgaySinh" class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LichSuGD" class="control-label"></label>
+                <input asp-for="LichSuGD" class="form-control" />
+                <span asp-validation-for="LichSuGD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioHang" class="control-label"></label>
+                <input asp-for="GioHang" class="form-control" />
+                <span asp-validation-for="GioHang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoaiTK" class="control-label"></label>
+                <div class="form-group">
+                    <select class="custom-select-sm" asp-for="LoaiTK" asp-items="@(new SelectList(ViewBag.ListUser,"IDLoai","Name"))"> </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="LienKetFB" class="control-label"></label>
+                <input asp-for="LienKetFB" class="form-control" />
+                <span asp-validation-for="LienKetFB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function previewFile() {
+            const preview = document.querySelector('img.img-thumbnail');
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                // convert image file to base64 string
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+}
